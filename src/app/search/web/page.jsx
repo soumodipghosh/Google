@@ -1,14 +1,16 @@
-// import WebSearchResults from '@/components/WebSearchResults';
 import WebSearchResults from '@/app/components/WebSearchResults';
 import Link from 'next/link';
 
 export default async function WebSearchPage({ searchParams }) {
   const startIndex = searchParams.start || '1';
   await new Promise((resolve) => setTimeout(resolve, 1000));
+
   const response = await fetch(
-`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&start=${startIndex}`
+    `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&start=${startIndex}`
   );
+
   if (!response.ok) throw new Error('Something went wrong');
+
   const data = await response.json();
   const results = data.items;
 
@@ -28,5 +30,5 @@ export default async function WebSearchPage({ searchParams }) {
     );
   }
 
-  return <div>{results && <WebSearchResults results={data} />}</div>;
+  return <div>{results && <WebSearchResults results={results} />}</div>;
 }
