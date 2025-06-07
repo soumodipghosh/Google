@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Google.Com",
-  description: "Google Clone",
+  description: "Google Clone using Next.js",
 };
 
 export default function RootLayout({ children }) {
