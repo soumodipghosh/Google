@@ -1,10 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true, // 👈 enable App Router inside src/app
-  },
   images: {
-    domains: ['upload.wikimedia.org'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
+  env: {
+    API_KEY: process.env.API_KEY,
+    CONTEXT_KEY: process.env.CONTEXT_KEY,
   },
 };
 

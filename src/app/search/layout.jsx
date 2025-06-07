@@ -1,15 +1,11 @@
-import React from 'react'
-import Search from '../components/Search'
-import "./../globals.css"
+import './../globals.css';
+import Search from '../components/Search';
 
-const layout = ({children}) => {
+export default function layout({ children }) {
   return (
     <div>
-    <Search/>
-    {children}
+      <Search />
+      {children}
     </div>
-  )
+  );
 }
-
-export default layout
-
