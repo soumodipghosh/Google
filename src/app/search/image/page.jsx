@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'; // <-- Add this line at the top
+export const dynamic = 'force-dynamic';
 
 import ImageSearchResults from '@/app/components/ImageSearchResults';
 import Link from 'next/link';
@@ -13,16 +13,21 @@ export default async function ImageSearchPage({ searchParams }) {
         <h1 className='text-3xl mb-4'>No search term provided</h1>
         <p className='text-lg'>
           Try searching again from{' '}
-          <Link href='/' className='text-blue-500'>
-            Home
-          </Link>
+          <Link href='/' className='text-blue-500'>Home</Link>
         </p>
       </div>
     );
   }
 
+  if (!process.env.API_KEY || !process.env.CONTEXT_KEY) {
+    throw new Error('Missing API_KEY or CONTEXT_KEY in environment variables');
+  }
+
   const response = await fetch(
-    `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchTerm}&searchType=image&start=${startIndex}`
+    `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchTerm}&searchType=image&start=${startIndex}`,
+    {
+      cache: 'no-store', // 🔥 Required for force-dynamic
+    }
   );
 
   if (!response.ok) throw new Error('Something went wrong');
@@ -38,9 +43,7 @@ export default async function ImageSearchPage({ searchParams }) {
         </h1>
         <p className='text-lg'>
           Try searching something else{' '}
-          <Link href='/' className='text-blue-500'>
-            Home
-          </Link>
+          <Link href='/' className='text-blue-500'>Home</Link>
         </p>
       </div>
     );
