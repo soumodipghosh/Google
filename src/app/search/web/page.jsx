@@ -1,14 +1,10 @@
-import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
-
-const WebSearchClient = dynamic(() => import('@/app/components/WebSearchClient'), {
-  ssr: false,
-});
+import WebSearchClientWrapper from '@/app/components/WebSearchClientWrapper';
 
 export default function WebSearchPage() {
   return (
-    <Suspense fallback={<div className="text-center pt-10 text-xl">Loading...</div>}>
-      <WebSearchClient />
+    <Suspense fallback={<div className="text-center pt-10">Loading...</div>}>
+      <WebSearchClientWrapper />
     </Suspense>
   );
 }
