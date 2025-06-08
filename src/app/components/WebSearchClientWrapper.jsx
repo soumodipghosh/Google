@@ -6,6 +6,6 @@ const WebSearchClient = dynamic(() => import('./WebSearchClient'), {
   ssr: false,
 });
 
-export default function WebSearchClientWrapper(props) {
-  return <WebSearchClient {...props} />;
+export default function WebSearchClientWrapper() {
+  return <WebSearchClient />;
 }
