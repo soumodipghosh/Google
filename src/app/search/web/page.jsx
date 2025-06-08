@@ -1,7 +1,7 @@
 'use client';
 
-export const dynamic = 'force-dynamic'; // ✅ Add this
-export const revalidate = 0;  // Disable static caching
+// export const dynamic = 'force-dynamic'; // ✅ Add this
+// export const revalidate = 0;  // Disable static caching
 
 
 import { useSearchParams } from 'next/navigation';
