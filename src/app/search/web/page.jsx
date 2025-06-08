@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic'; // ✅ Add this
+
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import WebSearchResults from '@/app/components/WebSearchResults';
